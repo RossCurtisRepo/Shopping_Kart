@@ -1,0 +1,143 @@
+2023-03-29 11:06:26.448 +01:00 [INF] Building Configuration
+2023-03-29 11:06:26.737 +01:00 [INF] Configuring Services
+2023-03-29 11:06:27.404 +01:00 [INF] Configuring Data Repository
+2023-03-29 11:06:28.001 +01:00 [INF] Ensuring database existence
+2023-03-29 11:06:29.357 +01:00 [WRN] No store type was specified for the decimal property 'OfferPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-03-29 11:06:29.377 +01:00 [INF] warn: 29/03/2023 11:06:29.377 SqlServerEventId.DecimalTypeDefaultWarning[30000] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      No store type was specified for the decimal property 'OfferPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-03-29 11:06:29.377 +01:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-03-29 11:06:29.377 +01:00 [INF] warn: 29/03/2023 11:06:29.377 SqlServerEventId.DecimalTypeDefaultWarning[30000] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-03-29 11:06:34.212 +01:00 [INF] info: 29/03/2023 11:06:34.212 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (69ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:06:34.384 +01:00 [INF] info: 29/03/2023 11:06:34.384 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (141ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+2023-03-29 11:06:34.386 +01:00 [INF] Migrating
+2023-03-29 11:06:34.396 +01:00 [INF] info: 29/03/2023 11:06:34.396 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:06:34.408 +01:00 [INF] info: 29/03/2023 11:06:34.408 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-29 11:06:34.410 +01:00 [INF] info: 29/03/2023 11:06:34.410 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:06:34.411 +01:00 [INF] info: 29/03/2023 11:06:34.411 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-29 11:06:34.489 +01:00 [INF] info: 29/03/2023 11:06:34.489 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+2023-03-29 11:06:34.531 +01:00 [INF] info: 29/03/2023 11:06:34.531 RelationalEventId.MigrationsNotApplied[20405] (Microsoft.EntityFrameworkCore.Migrations) 
+      No migrations were applied. The database is already up to date.
+2023-03-29 11:06:34.531 +01:00 [INF] Moving to main navigation menu
+2023-03-29 11:16:30.525 +01:00 [INF] Building Configuration
+2023-03-29 11:16:30.915 +01:00 [INF] Configuring Services
+2023-03-29 11:16:31.300 +01:00 [INF] Configuring Data Repository
+2023-03-29 11:16:31.754 +01:00 [INF] Ensuring database existence
+2023-03-29 11:16:36.699 +01:00 [INF] info: 29/03/2023 11:16:36.698 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:16:36.812 +01:00 [INF] info: 29/03/2023 11:16:36.812 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (84ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+2023-03-29 11:16:36.814 +01:00 [INF] Migrating
+2023-03-29 11:16:36.823 +01:00 [INF] info: 29/03/2023 11:16:36.823 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:16:36.832 +01:00 [INF] info: 29/03/2023 11:16:36.832 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-29 11:16:36.834 +01:00 [INF] info: 29/03/2023 11:16:36.834 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-29 11:16:36.835 +01:00 [INF] info: 29/03/2023 11:16:36.835 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-29 11:16:36.885 +01:00 [INF] info: 29/03/2023 11:16:36.885 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+2023-03-29 11:16:36.915 +01:00 [INF] info: 29/03/2023 11:16:36.915 RelationalEventId.MigrationsNotApplied[20405] (Microsoft.EntityFrameworkCore.Migrations) 
+      No migrations were applied. The database is already up to date.
+2023-03-29 11:16:36.915 +01:00 [INF] Moving to main navigation menu
+2023-03-29 11:16:50.722 +01:00 [INF] info: 29/03/2023 11:16:50.722 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (72ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
+      FROM [Products] AS [p]
+      WHERE [p].[Sku] = @__p_0
+2023-03-29 11:17:02.392 +01:00 [INF] info: 29/03/2023 11:17:02.392 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[@__entity_equality_p_0_Sku='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Products] AS [p]
+              WHERE [p].[Sku] = @__entity_equality_p_0_Sku) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+2023-03-29 11:17:02.794 +01:00 [INF] info: 29/03/2023 11:17:02.794 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = Int32), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [Products] ([Sku], [Description], [HasOffer], [OfferPrice], [OfferQty], [Price])
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2023-03-29 11:17:10.253 +01:00 [INF] info: 29/03/2023 11:17:10.253 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
+      FROM [Products] AS [p]
+      WHERE [p].[Sku] = @__p_0
+2023-03-29 11:17:11.985 +01:00 [INF] info: 29/03/2023 11:17:11.985 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
+      FROM [Products] AS [p]
+      WHERE [p].[Sku] = @__p_0
+2023-03-29 11:17:13.630 +01:00 [INF] info: 29/03/2023 11:17:13.629 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
+      FROM [Products] AS [p]
+      WHERE [p].[Sku] = @__p_0
+2023-03-29 11:17:18.825 +01:00 [INF] info: 29/03/2023 11:17:18.825 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
+      FROM [Products] AS [p]
+      WHERE [p].[Sku] = @__p_0
+2023-03-29 11:17:20.829 +01:00 [INF] info: 29/03/2023 11:17:20.829 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      DELETE FROM [Products]
+      OUTPUT 1
+      WHERE [Sku] = @p0;

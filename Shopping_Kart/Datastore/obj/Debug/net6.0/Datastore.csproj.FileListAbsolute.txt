@@ -1,0 +1,12 @@
+C:\ross\Shopping_Kart\Datastore\bin\Debug\net6.0\Datastore.deps.json
+C:\ross\Shopping_Kart\Datastore\bin\Debug\net6.0\Datastore.dll
+C:\ross\Shopping_Kart\Datastore\bin\Debug\net6.0\Datastore.pdb
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.csproj.AssemblyReference.cache
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.GeneratedMSBuildEditorConfig.editorconfig
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.AssemblyInfoInputs.cache
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.AssemblyInfo.cs
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.csproj.CoreCompileInputs.cache
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.dll
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\refint\Datastore.dll
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\Datastore.pdb
+C:\ross\Shopping_Kart\Datastore\obj\Debug\net6.0\ref\Datastore.dll
