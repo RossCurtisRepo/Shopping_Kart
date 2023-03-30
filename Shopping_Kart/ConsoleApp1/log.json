@@ -728,3 +728,52 @@
       SELECT TOP(1) [p].[Sku], [p].[Description], [p].[HasOffer], [p].[OfferPrice], [p].[OfferQty], [p].[Price]
       FROM [Products] AS [p]
       WHERE [p].[Sku] = @__p_0
+2023-03-30 10:18:59.033 +01:00 [INF] Building Configuration
+2023-03-30 10:18:59.732 +01:00 [INF] Configuring Services
+2023-03-30 10:19:00.596 +01:00 [INF] Configuring Data Repository
+2023-03-30 10:19:01.365 +01:00 [INF] Ensuring database existence
+2023-03-30 10:19:03.979 +01:00 [INF] info: 30/03/2023 10:19:03.978 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-30 10:19:04.077 +01:00 [INF] info: 30/03/2023 10:19:04.077 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (65ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      
+      IF EXISTS
+          (SELECT *
+           FROM [sys].[objects] o
+           WHERE [o].[type] = 'U'
+           AND [o].[is_ms_shipped] = 0
+           AND NOT EXISTS (SELECT *
+               FROM [sys].[extended_properties] AS [ep]
+               WHERE [ep].[major_id] = [o].[object_id]
+                   AND [ep].[minor_id] = 0
+                   AND [ep].[class] = 1
+                   AND [ep].[name] = N'microsoft_database_tools_support'
+          )
+      )
+      SELECT 1 ELSE SELECT 0
+2023-03-30 10:19:04.078 +01:00 [INF] Migrating
+2023-03-30 10:19:04.088 +01:00 [INF] info: 30/03/2023 10:19:04.088 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-30 10:19:04.098 +01:00 [INF] info: 30/03/2023 10:19:04.098 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-30 10:19:04.100 +01:00 [INF] info: 30/03/2023 10:19:04.100 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+2023-03-30 10:19:04.101 +01:00 [INF] info: 30/03/2023 10:19:04.101 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-03-30 10:19:04.153 +01:00 [INF] info: 30/03/2023 10:19:04.153 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+2023-03-30 10:19:04.186 +01:00 [INF] info: 30/03/2023 10:19:04.186 RelationalEventId.MigrationsNotApplied[20405] (Microsoft.EntityFrameworkCore.Migrations) 
+      No migrations were applied. The database is already up to date.
+2023-03-30 10:19:04.186 +01:00 [INF] Moving to main navigation menu
+2023-03-30 13:14:35.700 +01:00 [INF] Building Configuration
+2023-03-30 13:14:35.947 +01:00 [INF] Configuring Services
+2023-03-30 13:14:36.389 +01:00 [INF] Configuring Data Repository
+2023-03-30 13:14:37.229 +01:00 [INF] Ensuring database existence

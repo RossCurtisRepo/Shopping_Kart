@@ -22,14 +22,14 @@ namespace Shopping_Kart.Services
                     string sku = GetSku();
                     if (!nextItem) break;
                     int qty = GetQty();
-                    //should pass in cart to make this testable
+                    //should pass in cart to make this testable OR move to the cart class
                     AddToCart(sku, qty);
                 }
 
-                //should pass in cart to make this testable
+                //should pass in cart to make this testable OR move to the cart class
                 var total = Total_cart();
 
-                //should probably just add this to total cart
+                //should probably keep implementation specific, worth consideration.
                 foreach (var item in _cart.Items)
                 {
                     Console.WriteLine($"{item.Product.Description}  x{item.Quantity}  £{item.linetotal}");

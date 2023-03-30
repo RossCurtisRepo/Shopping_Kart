@@ -14,6 +14,7 @@ static class Program
 
     static void Main()
     {
+        //Needs revising.
         var curDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         var logger = Log.Logger = new LoggerConfiguration()
@@ -46,6 +47,7 @@ static class Program
                         .UseSqlServer(connectionString)
                         .LogTo(logger.Information, LogLevel.Information, null))
                     .AddScoped<IDataStore, DataStore>()
+                    //Navigation doesn't need to be registered as a service, moment of insanity. The other two would eventually be consumed by the client so would be correct in the long run.
                     .AddTransient<INavigationService, NavigationService>()
                     .AddTransient<IProductService, ProductService>()
                     .AddTransient<ITransactionService, TransactionService>();
@@ -57,7 +59,6 @@ static class Program
             Log.Logger.Information("Configuring Data Repository");
             MigrateDB(host);
 
-            //TODO - Need to consider alternative implementation
             Log.Logger.Information("Moving to main navigation menu");
             var app = ActivatorUtilities.CreateInstance<NavigationService>(host.Services);
             app.Run();
@@ -71,10 +72,17 @@ static class Program
             Log.CloseAndFlush();
         }
 
-        //todo - logging
+        //todo - logging, tidy up and add logs
         //todo - refactoring
-        //todo - unit tests
-        //todo - async data store
+        //todo - implement null object pattern where required/ address warnings
+        //todo - review accesibility modifiers
+        //todo - unit tests for both DS and Main application
+        //todo - consider use of asynchronous methods in datastore
+        //todo - consider restructuring of data, particulrly with regards to offers
+        //todo - transaction logging, should transactions be done in the main table, is caching worthwhile? Is a real time feed appropriate, rabbit MQ?
+        //todo - consider inventory
+        //todo - add environments, consider database support
+
     }
     static void MigrateDB(IHost host)
     {
