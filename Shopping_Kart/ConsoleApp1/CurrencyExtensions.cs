@@ -15,7 +15,7 @@ namespace Shopping_Kart
             decimal d;
 
             if (decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-GB"), out d))
-                
+
                 return (d * (decimal)Math.Pow(10, 2) % 1 == 0);
             else return false;
         }

@@ -1,15 +1,4 @@
 ﻿using Datastore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Drawing.Text;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace Shopping_Kart.Services
 {
@@ -17,7 +6,7 @@ namespace Shopping_Kart.Services
     {
         internal Cart _cart;
         internal IDataStore _ds;
-        internal bool enableTotal = false;
+        internal bool enableTotal;
         internal bool nextItem = true;
         public TransactionService(IDataStore ds)
         {
@@ -31,13 +20,16 @@ namespace Shopping_Kart.Services
                 while (true)
                 {
                     string sku = GetSku();
-                    if (nextItem == false) break;
+                    if (!nextItem) break;
                     int qty = GetQty();
+                    //should pass in cart to make this testable
                     AddToCart(sku, qty);
                 }
+
+                //should pass in cart to make this testable
                 var total = Total_cart();
 
-                //Display total
+                //should probably just add this to total cart
                 foreach (var item in _cart.Items)
                 {
                     Console.WriteLine($"{item.Product.Description}  x{item.Quantity}  £{item.linetotal}");
@@ -45,12 +37,17 @@ namespace Shopping_Kart.Services
                 Console.WriteLine($"Total: {total}");
                 Console.WriteLine();
 
+                //The y/n loop is repeated, add to getters class and pass in the message
                 while (true)
                 {
                     Console.WriteLine("New Transaction? Y/N");
                     var key = Console.ReadKey().Key;
                     if (key == ConsoleKey.Y)
                     {
+                        enableTotal = false;
+                        nextItem = true;
+                        _cart = new Cart();
+                        Console.Clear();
                         break;
                     }
                     if (key == ConsoleKey.N)
@@ -69,11 +66,19 @@ namespace Shopping_Kart.Services
             {
                 if (item.Product.HasOffer)
                 {
-                    //Ideally we should be pulling an offer as type and have an offer calculator factory to deal with different offer types.
+                    //Note:
+                    //Ideally we should be pulling an offer as type and have an offer calculator factory to deal with different offer types and make this far easier to manage
+                    //It's likely more than one type of offer would be implemented
+
+                    //Calculate any on offer
                     var offerQty = decimal.Truncate(item.Quantity / item.Product.OfferQty);
                     var offerTotal = offerQty * item.Product.OfferPrice;
+
+                    //Calculate any remaining singles
                     var remQty = item.Quantity - (offerQty * item.Product.OfferQty);
                     var remAmt = remQty * item.Product.Price;
+
+                    //Total line
                     item.linetotal = offerTotal + remAmt;
                     total += item.linetotal;
                 }
@@ -90,7 +95,9 @@ namespace Shopping_Kart.Services
         /// </summary>
         private string GetSku()
         {
-            //Todo, make a base class for all these generic "Getters" to inherit from, and then override in situations like this.
+            //Todo, make an abstract base class for all these generic "Getters" with virtual underlying methods
+            //This seperates concerns/ removes coupling of processing the information to the getting of information
+            //It also prevents the need for code reusability and makes for far more readable code
             string sku = "";
             string? input;
             while (string.IsNullOrEmpty(sku))
@@ -107,6 +114,7 @@ namespace Shopping_Kart.Services
                 input = Console.ReadLine();
                 if (enableTotal && input == "")
                 {
+                    input = null;
                     nextItem = false;
                     break;
                 }
@@ -130,7 +138,6 @@ namespace Shopping_Kart.Services
         /// </summary>
         private int GetQty()
         {
-            //Todo, make a base class for all these generic "Getters" to inherit from.
             int qty = 0;
             string? input;
             while (qty <= 0)
@@ -160,6 +167,7 @@ namespace Shopping_Kart.Services
             {
                 _cart.Items.Add(new CartItem(_ds.GetProduct(sku), qty));
             }
+
             //Total should be enabled only when items exist in the cart
             enableTotal = true;
         }

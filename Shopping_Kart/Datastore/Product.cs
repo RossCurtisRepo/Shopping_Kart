@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
-using System.Runtime;
 
 namespace Datastore
 {
@@ -27,9 +25,11 @@ namespace Datastore
         private string sku;
 
         [Key]
-        public string Sku { 
+        public string Sku
+        {
             get { return sku; }
-            set {sku = !string.IsNullOrEmpty(value) ? value.ToLower() : value; } }
+            set { sku = !string.IsNullOrEmpty(value) ? value.ToLower() : value; }
+        }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string Description { get; set; }

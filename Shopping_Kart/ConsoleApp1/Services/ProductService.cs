@@ -1,10 +1,4 @@
 ﻿using Datastore;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shopping_Kart.Services
 {
@@ -19,12 +13,11 @@ namespace Shopping_Kart.Services
         /// <summary>
         /// Add a new product to database
         /// </summary>
-        void IProductService.AddToDB()
+        public void AddToDB()
         {
             {
                 Console.Clear();
                 string? sku = null;
-
 
                 while (string.IsNullOrEmpty(sku))
                 {
@@ -38,7 +31,7 @@ namespace Shopping_Kart.Services
                 }
 
                 Product product = GetProductInfo(sku);
-                
+
                 _ds.AddProduct(product);
                 Console.Clear();
                 return;
@@ -65,7 +58,6 @@ namespace Shopping_Kart.Services
             }
             _ds.DeleteProduct(sku);
             Console.Clear();
-            return;
         }
         /// <summary>
         /// Update a product in database
@@ -89,7 +81,6 @@ namespace Shopping_Kart.Services
             Product product = GetProductInfo(sku);
             _ds.UpdateProduct(product);
             Console.Clear();
-            return;
         }
         /// <summary>
         /// Collects the information for a product
@@ -98,9 +89,10 @@ namespace Shopping_Kart.Services
         /// <returns>A <see cref="Product"/></returns>
         public Product GetProductInfo(string sku)
         {
+            //Move to abstract
+            //Consider splitting
             decimal price = 0;
             string? description = null;
-            bool offerApplies = false;
             int offerQuantity = 0;
             decimal offerPrice = 0;
             string? input;
@@ -126,12 +118,13 @@ namespace Shopping_Kart.Services
                 }
 
 
+                bool offerApplies;
                 while (true)
                 {
                     Console.WriteLine("Does a special offer apply? Y/N");
                     var key = Console.ReadKey().Key;
-                    
-                    
+
+
                     if (key == ConsoleKey.Y)
                     {
                         offerApplies = true;
@@ -142,10 +135,10 @@ namespace Shopping_Kart.Services
                         offerApplies = false;
                         break;
                     }
-                    
+
                 }
 
-                if (offerApplies == true)
+                if (offerApplies)
                 {
                     Console.WriteLine("Enter Quantity");
                     while (offerQuantity < 1)

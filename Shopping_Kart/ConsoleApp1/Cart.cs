@@ -1,9 +1,4 @@
 ﻿using Datastore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shopping_Kart
 {
@@ -15,8 +10,8 @@ namespace Shopping_Kart
         }
         public List<CartItem> Items { get; set; }
     }
-    
-public class CartItem
+
+    public class CartItem
     {
         public CartItem(Product prod, int qty)
         {

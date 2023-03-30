@@ -1,19 +1,12 @@
-﻿using Datastore;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Serilog;
 
 namespace Shopping_Kart.Services
 {
-    public class NavigationService: INavigationService
+    public class NavigationService : INavigationService
     {
         private readonly IProductService _productService;
         private readonly ITransactionService _transactionService;
-        public NavigationService(IProductService productService,ITransactionService transactionService)
+        public NavigationService(IProductService productService, ITransactionService transactionService)
         {
             _productService = productService;
             _transactionService = transactionService;

@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Datastore
 {
-public class DataStore : DbContext, IDataStore
+    public class DataStore : DbContext, IDataStore
     {
         internal readonly DataStoreContext context;
         internal DbSet<Product> products;
-        public DataStore (DataStoreContext context)
+        public DataStore(DataStoreContext context)
         {
             this.context = context;
             products = context.Set<Product>();
@@ -60,7 +52,7 @@ public class DataStore : DbContext, IDataStore
         }
 
         bool IDataStore.DeleteProduct(string sku)
-        {   
+        {
             var i = products.Find(sku.ToLower());
             var rc = i != null;
             if (rc)
@@ -81,7 +73,7 @@ public class DataStore : DbContext, IDataStore
             var rc = false;
             var i = products.Find(sku.ToLower());
             if (i != null) rc = true;
-                      
+
             return rc;
         }
     }
